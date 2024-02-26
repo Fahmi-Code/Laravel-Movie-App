@@ -1,7 +1,13 @@
 <div class="mt-8">
     <a href="{{ route('movies.show', $popularMovie['id']) }}">
-        <img src="https://image.tmdb.org/t/p/w220_and_h330_face{{$popularMovie['backdrop_path']}}" alt="poster"
-            class="hover:opacity-75 transition ease-in-out duration-150">
+
+        @if($popularMovie['backdrop_path'])
+        <img src="https://image.tmdb.org/t/p/w220_and_h330_face{{$popularMovie['backdrop_path']}}" alt="poster"/>
+
+        @else
+        
+            <img src="https://placehold.co/600x400/EEE/31343C" alt="poster"  class="hover:opacity-75 transition ease-in-out duration-150" />
+        @endif
     </a>
     <div class="mt-2">
         <a href="{{ route('movies.show', $popularMovie['id']) }}" class="text-lg mt-2 hover:text-gray:300">  {{$popularMovie['title']}}</a>
