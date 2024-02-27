@@ -2,7 +2,7 @@
     <a href="{{ route('movies.show', $popularMovie['id']) }}">
 
         @if($popularMovie['backdrop_path'])
-        <img src="https://image.tmdb.org/t/p/w220_and_h330_face{{$popularMovie['backdrop_path']}}" alt="poster"/>
+        <img src="{{$popularMovie['backdrop_path']}}" alt="poster"/>
 
         @else
         
@@ -20,14 +20,14 @@
                 </g>
             </svg>
 
-            <span class="ml-1">  {{$popularMovie['vote_average'] *10 }} %</span>
+            <span class="ml-1">  {{$popularMovie['vote_average']  }}</span>
             <span class="mx-2">|</span>
-            <span>  {{ \Carbon\Carbon::parse($popularMovie['release_date'])->format('d M, Y') }} </span>
+            <span>  {{$popularMovie['release_date'] }} </span>
         </div>
         <div class="text-gray-400 text-sm">
-            @foreach ($popularMovie['genre_ids'] as $key => $value)
-                {{ $genresArray[$value] }} @if (!$loop->last), @endif
-            @endforeach
+           
+                {{ $popularMovie['genres'] }} 
+           
         
         </div>
         
